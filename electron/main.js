@@ -50,39 +50,40 @@ function startBackend() {
       DB_FILENAME: path.join(USER_DATA_PATH, 'sima.sqlite3'),
       UPLOADS_DIR: UPLOADS_PATH,
       JWT_SECRET: 'sima-desktop-secret-key-change-in-production',
-      JWT_REFRESH_SECRET: 'sima-desktop-refresh-secret-key-change-in-production',
-      FRONTEND_URL: isDev ? `http://localhost:${FRONTEND_PORT}` : 'file://'
+      JWT_REFRESH_SECRET:
+        'sima-desktop-refresh-secret-key-change-in-production',
+      FRONTEND_URL: isDev ? `http://localhost:${FRONTEND_PORT}` : 'file://',
     };
 
     if (isDev) {
       backendProcess = spawn(nodePath, [scriptPath], {
         cwd: RESOURCES_PATH,
         env,
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
     } else {
       // En producción, usar el node embebido
       backendProcess = spawn(process.execPath, [scriptPath], {
         cwd: RESOURCES_PATH,
         env,
-        stdio: 'pipe'
+        stdio: 'pipe',
       });
 
-      backendProcess.stdout?.on('data', (data) => {
+      backendProcess.stdout?.on('data', data => {
         console.log(`Backend: ${data}`);
       });
 
-      backendProcess.stderr?.on('data', (data) => {
+      backendProcess.stderr?.on('data', data => {
         console.error(`Backend Error: ${data}`);
       });
     }
 
-    backendProcess.on('error', (error) => {
+    backendProcess.on('error', error => {
       console.error('❌ Error al iniciar backend:', error);
       reject(error);
     });
 
-    backendProcess.on('exit', (code) => {
+    backendProcess.on('exit', code => {
       console.log(`Backend process exited with code ${code}`);
     });
 
@@ -107,11 +108,11 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      webSecurity: true
+      webSecurity: true,
     },
     show: false,
     frame: true,
-    titleBarStyle: 'default'
+    titleBarStyle: 'default',
   });
 
   // Mostrar ventana cuando esté lista
@@ -143,15 +144,15 @@ function createWindow() {
         {
           label: 'Recargar',
           accelerator: 'CmdOrCtrl+R',
-          click: () => mainWindow.reload()
+          click: () => mainWindow.reload(),
         },
         { type: 'separator' },
         {
           label: 'Salir',
           accelerator: 'CmdOrCtrl+Q',
-          click: () => app.quit()
-        }
-      ]
+          click: () => app.quit(),
+        },
+      ],
     },
     {
       label: 'Ver',
@@ -159,14 +160,14 @@ function createWindow() {
         {
           label: 'Pantalla completa',
           accelerator: 'F11',
-          click: () => mainWindow.setFullScreen(!mainWindow.isFullScreen())
+          click: () => mainWindow.setFullScreen(!mainWindow.isFullScreen()),
         },
         {
           label: 'Herramientas de desarrollo',
           accelerator: 'CmdOrCtrl+Shift+I',
-          click: () => mainWindow.webContents.toggleDevTools()
-        }
-      ]
+          click: () => mainWindow.webContents.toggleDevTools(),
+        },
+      ],
     },
     {
       label: 'Ayuda',
@@ -177,13 +178,14 @@ function createWindow() {
             dialog.showMessageBox(mainWindow, {
               type: 'info',
               title: 'Acerca de S.I.M.A',
-              message: 'S.I.M.A - Sistema de Información de Mencionados y Aprehendidos',
-              detail: `Versión: ${app.getVersion()}\n\nDesarrollado por Flavio Sanchez\n© 2026 Todos los derechos reservados`
+              message:
+                'S.I.M.A - Sistema de Información de Mencionados y Aprehendidos',
+              detail: `Versión: ${app.getVersion()}\n\nDesarrollado por Flavio Sanchez\n© 2026 Todos los derechos reservados`,
             });
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    },
   ];
 
   const menu = Menu.buildFromTemplate(menuTemplate);
@@ -198,13 +200,13 @@ function createWindow() {
 async function initialize() {
   try {
     console.log('🔧 Inicializando S.I.M.A Desktop...');
-    
+
     // Iniciar backend
     await startBackend();
-    
+
     // Crear ventana
     createWindow();
-    
+
     console.log('✅ Aplicación lista');
   } catch (error) {
     console.error('❌ Error durante la inicialización:', error);
@@ -239,10 +241,10 @@ app.on('before-quit', () => {
 });
 
 // Manejo de errores no capturados
-process.on('uncaughtException', (error) => {
+process.on('uncaughtException', error => {
   console.error('Uncaught Exception:', error);
 });
 
-process.on('unhandledRejection', (error) => {
+process.on('unhandledRejection', error => {
   console.error('Unhandled Rejection:', error);
 });

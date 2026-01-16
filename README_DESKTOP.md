@@ -18,6 +18,7 @@ Versión de escritorio independiente, lista para instalar y usar.
 ### Opción 1: Instalador Pre-compilado (Recomendado)
 
 1. Descarga el instalador para tu sistema operativo:
+
    - **Windows**: `S.I.M.A-Setup-1.0.0.exe`
    - **macOS**: `S.I.M.A-1.0.0.dmg`
    - **Linux**: `S.I.M.A-1.0.0.AppImage` o `sima-desktop_1.0.0_amd64.deb`
@@ -53,7 +54,7 @@ npm run dev
 
 # 4. Compilar instalador (requiere ~10 minutos)
 npm run electron:build:win    # Windows
-npm run electron:build:mac    # macOS  
+npm run electron:build:mac    # macOS
 npm run electron:build:linux  # Linux
 ```
 
@@ -64,6 +65,7 @@ Los instaladores compilados estarán en la carpeta `dist/`.
 ### Primer Inicio
 
 1. Al abrir la aplicación por primera vez, se creará automáticamente:
+
    - Base de datos SQLite en `%APPDATA%/sima-desktop/data/sima.sqlite3`
    - Carpeta de fotos en `%APPDATA%/sima-desktop/data/uploads/`
    - Usuario administrador por defecto
@@ -77,6 +79,7 @@ Los instaladores compilados estarán en la carpeta `dist/`.
 ### Funciones Principales
 
 #### 👤 Gestión de Personas
+
 - Registrar nuevas personas mencionadas/aprehendidas
 - Buscar por nombre, DNI o comisaría
 - Subir fotografías
@@ -84,6 +87,7 @@ Los instaladores compilados estarán en la carpeta `dist/`.
 - Ver historial completo de registros
 
 #### 📋 Registros Delictuales
+
 - Crear registros con toda la información delictual
 - Asociar a personas existentes
 - Búsqueda avanzada con múltiples filtros
@@ -91,12 +95,14 @@ Los instaladores compilados estarán en la carpeta `dist/`.
 - Exportar datos a Excel/CSV
 
 #### 🗺️ Visualización Geográfica
+
 - Mapa interactivo con ubicaciones de delitos
 - Mapa de calor (heatmap) de zonas críticas
 - Clusters de incidentes
 - Filtros por fecha, tipo de delito y comisaría
 
 #### 📊 Estadísticas y Reportes
+
 - Dashboard con indicadores clave
 - Gráficos de delitos por tipo
 - Tendencias temporales
@@ -107,6 +113,7 @@ Los instaladores compilados estarán en la carpeta `dist/`.
 ### Ubicación de los Datos
 
 **Windows**:
+
 ```
 C:\Users\[TuUsuario]\AppData\Roaming\sima-desktop\data\
   ├── sima.sqlite3      (base de datos)
@@ -114,6 +121,7 @@ C:\Users\[TuUsuario]\AppData\Roaming\sima-desktop\data\
 ```
 
 **macOS**:
+
 ```
 ~/Library/Application Support/sima-desktop/data/
   ├── sima.sqlite3
@@ -121,6 +129,7 @@ C:\Users\[TuUsuario]\AppData\Roaming\sima-desktop\data\
 ```
 
 **Linux**:
+
 ```
 ~/.config/sima-desktop/data/
   ├── sima.sqlite3
@@ -130,11 +139,13 @@ C:\Users\[TuUsuario]\AppData\Roaming\sima-desktop\data\
 ### Backup de Datos
 
 **Método Manual**:
+
 1. Cierra la aplicación S.I.M.A
 2. Copia la carpeta `data/` completa a una ubicación segura
 3. Para restaurar, reemplaza la carpeta `data/` con tu backup
 
 **Método Automático** (próximamente):
+
 - La aplicación incluirá backups automáticos programables
 - Exportación a archivos comprimidos con fecha
 
@@ -143,6 +154,7 @@ C:\Users\[TuUsuario]\AppData\Roaming\sima-desktop\data\
 Si tenías una instalación web con PostgreSQL:
 
 1. Exporta los datos desde PostgreSQL:
+
 ```bash
 pg_dump -U postgres sima > backup.sql
 ```
@@ -154,11 +166,11 @@ pg_dump -U postgres sima > backup.sql
 
 ## ⌨️ Atajos de Teclado
 
-| Atajo | Acción |
-|-------|--------|
-| `Ctrl + R` | Recargar aplicación |
-| `Ctrl + Q` | Salir |
-| `F11` | Pantalla completa |
+| Atajo              | Acción                     |
+| ------------------ | -------------------------- |
+| `Ctrl + R`         | Recargar aplicación        |
+| `Ctrl + Q`         | Salir                      |
+| `F11`              | Pantalla completa          |
 | `Ctrl + Shift + I` | Herramientas de desarrollo |
 
 ## 🔒 Seguridad
@@ -202,6 +214,7 @@ pg_dump -U postgres sima > backup.sql
 ## 🏗️ Tecnologías Utilizadas
 
 ### Frontend
+
 - React 18
 - Material-UI (MUI)
 - Leaflet (mapas)
@@ -209,6 +222,7 @@ pg_dump -U postgres sima > backup.sql
 - React Router
 
 ### Backend
+
 - Node.js + Express
 - Knex.js (ORM)
 - SQLite3
@@ -216,6 +230,7 @@ pg_dump -U postgres sima > backup.sql
 - Multer (uploads)
 
 ### Desktop
+
 - Electron
 - Electron Builder
 - Squirrel (auto-update)
@@ -223,6 +238,7 @@ pg_dump -U postgres sima > backup.sql
 ## 📝 Changelog
 
 ### v1.0.0 (2026-01-16)
+
 - ✨ Primera versión de escritorio
 - ✅ Migración de PostgreSQL a SQLite
 - ✅ Instaladores para Windows, macOS y Linux

@@ -10,14 +10,14 @@ module.exports = function (env, argv) {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: 'bundle.js',
-      publicPath: './'
+      publicPath: './',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
       fallback: {
         path: require.resolve('path-browserify'),
-        fs: false
-      }
+        fs: false,
+      },
     },
     module: {
       rules: [
@@ -27,20 +27,20 @@ module.exports = function (env, argv) {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
-            }
-          }
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+            },
+          },
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
-          type: 'asset/resource'
-        }
-      ]
+          type: 'asset/resource',
+        },
+      ],
     },
-    devtool: isDevelopment ? 'source-map' : false
+    devtool: isDevelopment ? 'source-map' : false,
   };
 };

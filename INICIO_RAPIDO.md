@@ -13,11 +13,13 @@ npm run dev
 ```
 
 Esto iniciará:
+
 - ✅ Backend en http://localhost:4000
-- ✅ Frontend en http://localhost:3000  
+- ✅ Frontend en http://localhost:3000
 - ✅ Ventana de Electron con la aplicación
 
 **Login por defecto:**
+
 - Usuario: `admin`
 - Contraseña: `admin123`
 
@@ -26,16 +28,19 @@ Esto iniciará:
 ### 2️⃣ **Compilar Instalador (Una vez probado)**
 
 #### Para Windows (.exe):
+
 ```bash
 npm run electron:build:win
 ```
 
 #### Para macOS (.dmg):
+
 ```bash
 npm run electron:build:mac
 ```
 
 #### Para Linux (.deb / .AppImage):
+
 ```bash
 npm run electron:build:linux
 ```
@@ -51,8 +56,9 @@ npm run electron:build:linux
 Para que la app tenga su propio icono:
 
 1. Crea o descarga iconos en estos formatos:
+
    - `icon.ico` (Windows) - 256x256px
-   - `icon.icns` (macOS)  
+   - `icon.icns` (macOS)
    - `icon.png` (Linux) - 512x512px
 
 2. Colócalos en la carpeta `build/`
@@ -60,6 +66,7 @@ Para que la app tenga su propio icono:
 3. Vuelve a compilar con el comando del paso 2
 
 **💡 Herramientas gratuitas:**
+
 - https://icon.kitchen/
 - https://converticon.com/
 - https://favicon.io/
@@ -98,14 +105,14 @@ Para que la app tenga su propio icono:
 
 ## 🎯 Comandos Útiles
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Inicia en modo desarrollo |
-| `npm run build` | Compila frontend y backend |
-| `npm run electron:build` | Compila para todas las plataformas |
-| `npm run electron:build:win` | Solo Windows |
-| `npm run electron:build:mac` | Solo macOS |
-| `npm run electron:build:linux` | Solo Linux |
+| Comando                        | Descripción                        |
+| ------------------------------ | ---------------------------------- |
+| `npm run dev`                  | Inicia en modo desarrollo          |
+| `npm run build`                | Compila frontend y backend         |
+| `npm run electron:build`       | Compila para todas las plataformas |
+| `npm run electron:build:win`   | Solo Windows                       |
+| `npm run electron:build:mac`   | Solo macOS                         |
+| `npm run electron:build:linux` | Solo Linux                         |
 
 ---
 
@@ -154,6 +161,7 @@ S.I.M.A/
 ## 🔥 ¡Estás listo para usar S.I.M.A Desktop!
 
 Comienza ejecutando:
+
 ```bash
 npm run dev
 ```
@@ -162,6 +170,6 @@ npm run dev
 
 **Desarrollado por:** Flavio Sanchez  
 **Versión:** 1.0.0  
-**Fecha:** Enero 2026  
+**Fecha:** Enero 2026
 
 ¿Necesitas ayuda? Revisa [README_DESKTOP.md](./README_DESKTOP.md) para documentación detallada.
