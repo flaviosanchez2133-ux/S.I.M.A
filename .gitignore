@@ -1,17 +1,89 @@
+# Dependencias
 backend/node_modules/
-backend/uploads/
+sima-frontend/node_modules/
+node_modules/
+.npm
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Builds de Electron
+dist/
+out/
+release/
+
+# Archivos de desarrollo
 backend/.env
 backend/.env.*.local
-backend/coverage/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+backend/logs/
+backend/*.pid
+backend/logs*.txt
 backend/debug.log
 backend/npm-debug.log*
 backend/yarn-debug.log*
 backend/yarn-error.log*
-backend/.DS_Store
-backend/*.sqlite
-
-node_modules/
-dist/
-.vscode/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Base de datos
+backend/*.sqlite
+backend/*.sqlite3
+backend/*.db
+*.sqlite3
+*.sqlite
+*.db
+
+# Uploads
+backend/uploads/
+uploads/
+
+# Testing
+backend/coverage/
+coverage/
+.nyc-output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build de React
+sima-frontend/build/
+
+# Sistema operativo
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporal
+tmp/
+temp/
+*.tmp
+
+# Backups
+*.backup
+*.bak
+archives/
+
+# Electron
+.cache/
+*.app
+*.dmg
+*.exe
+*.deb
+*.rpm
+*.AppImage

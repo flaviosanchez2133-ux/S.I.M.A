@@ -1,0 +1,81 @@
+{
+  "name": "sima-desktop",
+  "productName": "S.I.M.A",
+  "version": "1.0.0",
+  "description": "Sistema de Información de Mencionados y Aprehendidos - Aplicación de Escritorio",
+  "main": "electron/main.js",
+  "author": "Flavio Sanchez",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd backend && npm install && cd ../sima-frontend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" \"npm run dev:electron\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd sima-frontend && BROWSER=none npm start",
+    "dev:electron": "wait-on http://localhost:3000 && electron .",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd sima-frontend && npm run build",
+    "build:backend": "cd backend && npm install --production",
+    "electron:build": "npm run build && electron-builder",
+    "electron:build:win": "npm run build && electron-builder --win",
+    "electron:build:mac": "npm run build && electron-builder --mac",
+    "electron:build:linux": "npm run build && electron-builder --linux",
+    "electron:dist": "npm run build && electron-builder --win --mac --linux"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.sima.desktop",
+    "productName": "S.I.M.A",
+    "copyright": "Copyright © 2026 Flavio Sanchez",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "backend/**/*",
+      "!backend/node_modules/**/*",
+      "!backend/dev.sqlite3",
+      "!backend/.env",
+      "!backend/logs/**/*",
+      "!backend/uploads/**/*",
+      "sima-frontend/build/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "backend/node_modules",
+        "to": "backend/node_modules",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "S.I.M.A"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.business"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "build/icon.png",
+      "category": "Office"
+    }
+  }
+}

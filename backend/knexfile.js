@@ -18,23 +18,25 @@ const pgConfig = {
   migrations: { tableName: 'knex_migrations', directory: './migrations' },
 };
 
-// Configuración para SQLite (desarrollo)
+// Configuración para SQLite (desarrollo y escritorio)
 const sqliteConfig = {
   client: 'sqlite3',
   connection: {
-    filename: './dev.sqlite3',
+    filename: process.env.DB_FILENAME || './dev.sqlite3',
   },
   useNullAsDefault: true,
   migrations: { tableName: 'knex_migrations', directory: './migrations' },
 };
 
-// Usar SQLite en desarrollo si DATABASE_URL no está definido o DB_PASSWORD está vacío
+// Usar SQLite en desarrollo o cuando se especifica DB_CLIENT=sqlite3
 const useSqlite =
-  process.env.NODE_ENV === 'development' &&
-  (!process.env.DB_PASSWORD || process.env.DB_PASSWORD === '');
+  process.env.DB_CLIENT === 'sqlite3' ||
+  (process.env.NODE_ENV === 'development' &&
+    (!process.env.DB_PASSWORD || process.env.DB_PASSWORD === ''));
 
 module.exports = {
   development: useSqlite ? sqliteConfig : pgConfig,
+  desktop: sqliteConfig, // Nueva configuración para modo escritorio
   test: { ...pgConfig },
-  production: { ...pgConfig },
+  production: useSqlite ? sqliteConfig : pgConfig,
 };
